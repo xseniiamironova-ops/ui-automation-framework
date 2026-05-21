@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Regression suite">
+
+    <test name="UI Tests">
+
+        <classes>
+            <class name="test.auth.AuthPageTests"/>
+            <class name="test.form.FormPageTests"/>
+        </classes>
+
+    </test>
+</suite>

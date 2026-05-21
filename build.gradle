@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id("io.qameta.allure") version "4.0.2"
+}
+
+group = 'protei.test.task'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    runtimeOnly("org.aspectj:aspectjweaver:1.9.25.1")
+
+    implementation(
+            'com.codeborne:selenide:7.16.0',
+            'org.testng:testng:7.11.0',
+
+            'io.qameta.allure:allure-testng:2.33.0',
+            'io.qameta.allure:allure-selenide:2.33.0',
+
+            'org.assertj:assertj-core:3.27.7'
+    )
+}
+
+test {
+    ignoreFailures = true
+
+    useTestNG() {
+        useDefaultListeners = true
+        suites "src/test/resources/suites/${System.getProperty('testSuite')}.xml"
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
